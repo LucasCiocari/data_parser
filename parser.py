@@ -1,5 +1,9 @@
+import os
+
 li = []
-with open('infos.dat', 'r') as file:
+path = os.getenv('HOMEPATH') + '/data/'
+
+with open(path + 'in/' + 'infos.dat', 'r') as file:
     for line in file:
         line = line.split('\n')[0]
         li.append(line.split('Ã§'))
@@ -28,7 +32,11 @@ for sale in newli:
     if(sale[2] < sale_min[2]):
         sale_min = sale
 
-print('Pior vendedor: ' + str(newli[newli.index(sale_min)][3]))
-print('ID da melhor venda: ' + str(newli[newli.index(sale_max)][1]))
-print('Nro de vendedores: ' + str(n_vendor))
-print('Nro de clientes: '+ str(n_clients))
+with open(path+'in/'+ 'infos.done.dat', 'w') as file:
+    file.write('Pior vendedor: ' + str(newli[newli.index(sale_min)][3]))
+    file.write('\nID da melhor venda: ' + str(newli[newli.index(sale_max)][1]))
+    file.write('\nNro de vendedores: ' + str(n_vendor))
+    file.write('\nNro de clientes: '+ str(n_clients))
+
+
+
