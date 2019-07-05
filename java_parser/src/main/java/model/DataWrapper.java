@@ -8,12 +8,35 @@ public class DataWrapper {
     private ArrayList<Seller> sellers;
     private ArrayList<Sale> sales;
     private ArrayList<Customer> customers;
-
+    Sale max;
+    Sale min;
 
     public DataWrapper() {
         sellers = new ArrayList<Seller>();
         sales = new ArrayList<Sale>();
         customers = new ArrayList<Customer>();
+    }
+
+    public Sale getMax() {
+        return max;
+    }
+
+    public Sale getMin() {
+        return min;
+    }
+
+    public void computeMinMax(){
+        max = this.getSales().get(0);
+        min = max;
+
+        for(Sale sale : this.getSales()) {
+            if(sale.getTotal() > max.getTotal()){
+                max = sale;
+            }
+            if(sale.getTotal() < min.getTotal()) {
+                min = sale;
+            }
+        }
     }
 
     public ArrayList<Seller> getSellers() {

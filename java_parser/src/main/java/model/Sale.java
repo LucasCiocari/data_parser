@@ -14,9 +14,11 @@ public class Sale {
         this.itemsSold = itemsSold;
         this.salesman = salesman;
 
-        for(Item i : itemsSold) {
-            total += i.getPrice() * i.getQuantity();
-        }
+        computeTotal();
+    }
+
+    private void computeTotal() {
+        for(Item i : itemsSold) total += i.getPrice() * i.getQuantity();
     }
 
     public String getId() {
