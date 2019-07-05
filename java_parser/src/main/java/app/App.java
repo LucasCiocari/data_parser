@@ -45,7 +45,7 @@ public class App {
                             workData.addSale(data);
                         }
                     }
-                    
+
                     Sale max = workData.getSales().get(0);
                     Sale min = max;
 
