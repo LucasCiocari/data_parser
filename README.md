@@ -1,2 +1,1 @@
-# data_parser
- 
+Run the program, then whenever a new file pops in the folder data/in, it will be parsed. 
