@@ -4,6 +4,7 @@ import model.DataWrapper;
 import org.joda.time.DateTime;
 
 import java.io.*;
+import java.util.regex.Pattern;
 
 public class FileParser {
     BufferedReader file;
@@ -12,7 +13,7 @@ public class FileParser {
     public FileParser(String fileName) {
         this.fileName = fileName;
         try {
-            file = new BufferedReader(new FileReader(new File(FileWatcher.pathToDir + fileName)));
+            file = new BufferedReader(new FileReader(new File(FileWatcher.pathToDir + "in/" + fileName)));
         } catch (FileNotFoundException e) {
             file = null;
         }
@@ -63,14 +64,16 @@ public class FileParser {
 
     public void generateResult(DataWrapper workData) {
         workData.computeMinMax();
+        new File(FileWatcher.pathToDir + "out").mkdirs();
         try {
-            FileWriter fw = new FileWriter(FileWatcher.pathToDir + "out/" + this.fileName + ".done.dat");
+            FileWriter fw = new FileWriter(FileWatcher.pathToDir + "out/" + this.fileName.split(Pattern.quote("."))[0] + ".done.dat");
             fw.write("Report of "+ this.fileName + " on " + DateTime.now() + " :\n");
-            fw.write("=");
+            fw.write("=\n");
             fw.write("Number of sellers: " + workData.getSellers().size() + "\n");
             fw.write("Number of customers: "+ workData.getCustomers().size() + "\n");
             fw.write("Id of the best sale: " + workData.getMax().getId() + "\n");
             fw.write("The worst salesman: " + workData.getMin().getSalesman() + "\n");
+            fw.close();
         } catch (IOException e) {
             System.out.println("Failed to generate output.");
         }
