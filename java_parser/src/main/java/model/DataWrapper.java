@@ -14,7 +14,6 @@ public class DataWrapper {
         sellers = new ArrayList<Seller>();
         sales = new ArrayList<Sale>();
         customers = new ArrayList<Customer>();
-
     }
 
     public ArrayList<Seller> getSellers() {
