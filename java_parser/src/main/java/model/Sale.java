@@ -25,24 +25,12 @@ public class Sale {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public ArrayList<Item> getItemsSold() {
         return itemsSold;
     }
 
-    public void setItemsSold(ArrayList<Item> itemsSold) {
-        this.itemsSold = itemsSold;
-    }
-
     public String getSalesman() {
         return salesman;
-    }
-
-    public void setSalesman(String salesman) {
-        this.salesman = salesman;
     }
 
     public Double getTotal() {

@@ -8,8 +8,8 @@ public class DataWrapper {
     private ArrayList<Seller> sellers;
     private ArrayList<Sale> sales;
     private ArrayList<Customer> customers;
-    Sale max;
-    Sale min;
+    private Sale max;
+    private Sale min;
 
     public DataWrapper() {
         sellers = new ArrayList<Seller>();
@@ -18,10 +18,16 @@ public class DataWrapper {
     }
 
     public Sale getMax() {
+        if (max == null){
+            this.computeMinMax();
+        }
         return max;
     }
 
     public Sale getMin() {
+        if (min == null){
+            this.computeMinMax();
+        }
         return min;
     }
 
