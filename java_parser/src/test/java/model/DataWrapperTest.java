@@ -35,4 +35,38 @@ public class DataWrapperTest {
         expected = "08";
         assertEquals(expected, testDataWrapper.getMin().getId());
     }
+
+    @Test
+    public void testIfGetMinRunsWhenNull() {
+        String expected = "08";
+        assertEquals(expected, testDataWrapper.getMin().getId());
+    }
+
+    @Test
+    public void testIfGetMaxRunsWhenNull() {
+        String expected = "10";
+        assertEquals(expected, testDataWrapper.getMax().getId());
+    }
+
+    @Test
+    public void testGetCustomer() {
+        String[] customer1 = {"001", "1234","Business1", "Accounting"};
+
+        assertEquals(customer1[2], testDataWrapper.getCustomers().get(0).getName());
+    }
+
+    @Test
+    public void testGetSeller() {
+        String[] salesman1 = {"002", "aaaa1234", "Lucio", "4202.24"};
+        assertEquals(salesman1[2], testDataWrapper.getSellers().get(0).getName());
+    }
+
+    @Test
+    public void testMaxCondition() {
+        String[] sale2 = {"003", "11", "[3-20-100]", "Paulo" };
+        Double expected = 2000.0;
+        testDataWrapper.addSale(sale2);
+        testDataWrapper.computeMinMax();
+        assertEquals(expected, testDataWrapper.getMax().getTotal());
+    }
 }
