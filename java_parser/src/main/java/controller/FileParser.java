@@ -74,6 +74,7 @@ public class FileParser {
             fw.write("Id of the best sale: " + workData.getMax().getId() + "\n");
             fw.write("The worst salesman: " + workData.getMin().getSalesman() + "\n");
             fw.close();
+            System.out.println("Generated file ~/data/out/" + this.fileName.split(Pattern.quote("."))[0] + ".done.dat");
         } catch (IOException e) {
             System.out.println("Failed to generate output.");
         }

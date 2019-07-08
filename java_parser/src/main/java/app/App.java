@@ -4,12 +4,13 @@ import controller.FileParser;
 import controller.FileWatcher;
 import model.DataWrapper;
 
-import java.io.*;
 import java.util.ArrayList;
 
 public class App {
 
     public static void main(String[] args) {
+
+        System.out.println("Listening for new files");
 
         DataWrapper workData = new DataWrapper();
 
@@ -18,6 +19,7 @@ public class App {
         while (true) {
             files = watcher.waitForFiles();
             for (String fileName : files) {
+                System.out.println("Found file " + fileName);
                 FileParser parser = new FileParser(fileName);
                 workData = parser.parseDataIntoModel();
                 parser.closeFile();

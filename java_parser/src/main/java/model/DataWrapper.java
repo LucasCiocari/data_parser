@@ -15,6 +15,10 @@ public class DataWrapper {
         sellers = new ArrayList<Seller>();
         sales = new ArrayList<Sale>();
         customers = new ArrayList<Customer>();
+        ArrayList<Item> emptyItems = new ArrayList<Item>();
+        emptyItems.add(new Item("XXX", 0, 0.0));
+        max = new Sale("NNN", emptyItems, "None");
+        min = max;
     }
 
     public Sale getMax() {
@@ -32,15 +36,17 @@ public class DataWrapper {
     }
 
     public void computeMinMax(){
-        max = this.getSales().get(0);
-        min = max;
+        if(!sales.isEmpty()) {
+            max = this.getSales().get(0);
+            min = max;
 
-        for(Sale sale : this.getSales()) {
-            if(sale.getTotal() > max.getTotal()){
-                max = sale;
-            }
-            if(sale.getTotal() < min.getTotal()) {
-                min = sale;
+            for (Sale sale : this.getSales()) {
+                if (sale.getTotal() > max.getTotal()) {
+                    max = sale;
+                }
+                if (sale.getTotal() < min.getTotal()) {
+                    min = sale;
+                }
             }
         }
     }
