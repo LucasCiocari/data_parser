@@ -15,10 +15,7 @@ public class DataWrapper {
         sellers = new ArrayList<Seller>();
         sales = new ArrayList<Sale>();
         customers = new ArrayList<Customer>();
-        ArrayList<Item> emptyItems = new ArrayList<Item>();
-        emptyItems.add(new Item("XXX", 0, 0.0));
-        max = new Sale("NNN", emptyItems, "None");
-        min = max;
+    
     }
 
     public Sale getMax() {

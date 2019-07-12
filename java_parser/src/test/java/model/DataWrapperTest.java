@@ -37,6 +37,7 @@ public class DataWrapperTest {
     @Test
     public void testIfGetMinRunsWhenNull() {
         String expected = "08";
+        System.out.println(testDataWrapper.getMin().getId());
         assertEquals(expected, testDataWrapper.getMin().getId());
     }
 

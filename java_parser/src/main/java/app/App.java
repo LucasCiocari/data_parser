@@ -9,15 +9,15 @@ import java.util.ArrayList;
 public class App {
 
     public static void main(String[] args) {
-
-        System.out.println("Listening for new files");
-
+    	
+    	
         DataWrapper workData = new DataWrapper();
 
         FileWatcher watcher = new FileWatcher();
         ArrayList<String> files;
         while (true) {
             files = watcher.waitForFiles();
+      
             for (String fileName : files) {
                 System.out.println("Found file " + fileName);
                 FileParser parser = new FileParser(fileName);
@@ -25,6 +25,7 @@ public class App {
                 parser.closeFile();
                 parser.generateResult(workData);
             }
+            System.out.println("Listening for new files...");
         }
     }
 }
